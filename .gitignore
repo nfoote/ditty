@@ -1,0 +1,44 @@
+# -- back end --
+backend/node_modules
+backend/.env
+
+# Logs
+backend/logs
+backend/*.log
+backend/npm-debug.log*
+backend/yarn-debug.log*
+backend/yarn-error.log*
+backend/lerna-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+backend/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+backend/pids
+backend/*.pid
+backend/*.seed
+backend/*.pid.lock
+
+# -- front end --
+
+# dependencies
+frontend/ditty-app/node_modules
+frontend/ditty-app/.pnp
+frontend/ditty-app/.pnp.js
+
+# testing
+frontend/ditty-app/coverage
+
+# production
+frontend/ditty-app/build
+
+# misc
+frontend/ditty-app/.DS_Store
+frontend/ditty-app/.env.local
+frontend/ditty-app/.env.development.local
+frontend/ditty-app/.env.test.local
+frontend/ditty-app/.env.production.local
+
+frontend/ditty-app/npm-debug.log*
+frontend/ditty-app/yarn-debug.log*
+frontend/ditty-app/yarn-error.log*
