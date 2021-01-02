@@ -48,11 +48,18 @@ app.get('/getSong', (req, res) => {
     }
   });
 
-})
+});
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
-})
+});
+
+app.post('/upload', upload.single('photo'), (req, res) => {
+  if (req.file){
+    res.json(req.file);
+  }
+  else throw 'error'
+});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

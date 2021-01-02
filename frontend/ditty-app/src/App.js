@@ -1,9 +1,13 @@
 import './App.css';
-import Input from './components/input';
+import TextInput from './components/text-input';
+import ImageUpload from './components/image-upload'
 
 function App() {
   return (
-    <Input/>
+    <>
+    <TextInput/>
+    <ImageUpload />
+    </>
   );
 }
 
