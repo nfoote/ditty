@@ -3,6 +3,9 @@ const app = express()
 require('dotenv').config()
 var request = require('request'); // "Request" library
 
+const multer = require('multer');
+const upload = multer({dest: __dirname + '/uploads/images'});
+
 const port = 8080
 
 app.get('/getSong', (req, res) => {
