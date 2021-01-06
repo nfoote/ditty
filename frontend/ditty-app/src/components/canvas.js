@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as ml5 from 'ml5';
-import { map } from 'lodash';
 
 const Canvas = ({ imageData }) => {
   const canvasRef = useRef(null);
@@ -8,7 +7,9 @@ const Canvas = ({ imageData }) => {
   const [predictions, setPredictions] = useState([]);
   const img = new Image();
 
-  const transformResultData = (results) => map(results, (result) => result.label);
+  const transformLabel = ({ label, confidence }) => `${label} (Confidence: ${confidence})`;
+
+  const transformResultData = (results) => results.map((result) => ({ label: result.label, confidence: result.confidence }));
 
   const classifyImg = () => {
     // Initialize the Image Classifier method with MobileNet
@@ -18,7 +19,7 @@ const Canvas = ({ imageData }) => {
     const image = img;
     // Make a prediction with a selected image
     classifier.predict(image, 5, (err, results) => {
-      setPredictions(transformResultData(results));
+      if (results) { setPredictions(transformResultData(results)); }
     });
   };
 
@@ -71,7 +72,7 @@ const Canvas = ({ imageData }) => {
           <p key={key}>
             {key + 1}
             :
-            {p}
+            {transformLabel(p)}
           </p>
         ))}
       </div>
