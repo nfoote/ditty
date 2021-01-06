@@ -12,7 +12,7 @@ app.get('/getSong', (req, res) => {
   console.log(req.query.value)
 
   const query = encodeURI(req.query.value);
-  const types = "artist";
+  const types = "album";
 
   // Search:
   // Type = album, artist, playlist, track, show and espisode

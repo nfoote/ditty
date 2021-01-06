@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 
-const Button = (value) => {
-  const handleOnClick = () => {
-    console.log(fetch(`/getSong?value=${value}`));
-  };
-  return (<button type="button" onClick={() => handleOnClick()}>Search song</button>);
-};
+const Button = (value) => (
+  <button
+    type="button"
+    onClick={() => {
+      console.log(fetch(`/getSong?value=${value}`));
+    }}
+  >
+    Search song
+  </button>
+);
 
 const TextInput = () => {
   const [userInput, setUserInput] = useState('');
