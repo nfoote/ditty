@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as ml5 from 'ml5';
+import Flex from './flex';
 
-const Canvas = ({ imageData }) => {
+const Canvas = ({ imageData, onClick }) => {
   const canvasRef = useRef(null);
   const [context, setContext] = useState(null);
   const [predictions, setPredictions] = useState([]);
@@ -43,12 +44,9 @@ const Canvas = ({ imageData }) => {
   }, [context, imageData]);
 
   return (
-    <div
-      style={{
-        textAlign: 'center',
-      }}
-    >
+    <Flex>
       <canvas
+        onClick={() => onClick()}
         id="canvas"
         ref={canvasRef}
         width={500}
@@ -76,8 +74,8 @@ const Canvas = ({ imageData }) => {
           </p>
         ))}
       </div>
+    </Flex>
 
-    </div>
   );
 };
 
