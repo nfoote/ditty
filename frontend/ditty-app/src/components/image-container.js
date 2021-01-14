@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { head } from 'lodash';
 import Dropzone from './drop-zone';
+import Canvas from './canvas';
 // import classifyImage from '../classifiers/classify-image';
 
 const ImageContainer = () => {
-  const onDrop = async (acceptedFiles) => {
-    // do stuff with your files and the newFunction
-    // console.log(acceptedFiles);
+  const [imageData, setImageData] = useState(null);
+
+  const onDrop = (acceptedFiles) => {
     const first = head(acceptedFiles);
-    console.log(first);
-    // classifyImage(first);
+    const reader = new FileReader();
+    reader.readAsDataURL(first);
+
+    reader.onloadend = () => {
+      setImageData(reader.result);
+    };
   };
 
   return (
-    <Dropzone onDrop={(acceptedFiles, rejectedFiles) => onDrop(acceptedFiles, rejectedFiles)} />
+    <>
+      <Dropzone onDrop={(acceptedFiles, rejectedFiles) => onDrop(acceptedFiles, rejectedFiles)} />
+      <Canvas imageData={imageData} />
+    </>
   );
 };
 

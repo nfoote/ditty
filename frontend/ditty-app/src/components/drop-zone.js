@@ -52,7 +52,7 @@ const Dropzone = ({ onDrop }) => {
   ]);
 
   return (
-    <div className="container">
+    <div>
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
         <p>Drag drop some files here, or click to select files</p>
