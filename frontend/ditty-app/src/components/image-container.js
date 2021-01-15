@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { head } from 'lodash';
+import { head, map } from 'lodash';
 import Dropzone from './drop-zone';
 import Canvas from './canvas';
+import Prediction from './predicition';
 import classifyImage from '../classifiers/classify-image';
 
 const ImageContainer = () => {
   const [imageData, setImageData] = useState(null);
   const [predictions, setPredictions] = useState([]);
-  const transformLabel = ({ label, confidence }) => `${label} (Confidence: ${confidence})`;
+  // const transformLabel = ({ label, confidence }) => `${label} (Confidence: ${confidence})`;
 
   const onDrop = (acceptedFiles) => {
     const first = head(acceptedFiles);
@@ -30,13 +31,10 @@ const ImageContainer = () => {
         <Canvas imageData={imageData} onImageLoad={(img) => onImageLoad(img)} />
       </Dropzone>
       <div>
-        {predictions.map((p, key) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <p key={key}>
-            {key + 1}
-            :
-            {transformLabel(p)}
-          </p>
+        {map(predictions, (p, key) => (
+          <div>
+            <Prediction prediction={p} key={key} />
+          </div>
         ))}
       </div>
     </>
