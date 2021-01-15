@@ -31,7 +31,7 @@ const rejectStyle = {
   borderColor: '#ff1744',
 };
 
-const Dropzone = ({ onDrop }) => {
+const Dropzone = ({ onDrop, children }) => {
   const {
     getRootProps,
     getInputProps,
@@ -52,10 +52,11 @@ const Dropzone = ({ onDrop }) => {
   ]);
 
   return (
-    <div>
+    <div className="container">
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
         <p>Drag drop some files here, or click to select files</p>
+        {children}
       </div>
     </div>
   );
