@@ -6,8 +6,6 @@ const Canvas = ({ imageData, onImageLoad }) => {
   const [context, setContext] = useState(null);
   const img = new Image();
 
-  // const transformResultData = (results) => results.map((result) => ({ label: result.label, confidence: result.confidence }));
-
   useEffect(() => {
     if (canvasRef.current) {
       const renderCtx = canvasRef.current.getContext('2d');

@@ -38,6 +38,8 @@ frontend/ditty-app/.env.local
 frontend/ditty-app/.env.development.local
 frontend/ditty-app/.env.test.local
 frontend/ditty-app/.env.production.local
+frontend/ditty-app/.eslintcache
+
 
 frontend/ditty-app/npm-debug.log*
 frontend/ditty-app/yarn-debug.log*
