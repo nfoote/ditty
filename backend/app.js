@@ -64,6 +64,8 @@ app.post('/upload', upload.single('photo'), (req, res) => {
   else throw 'error'
 });
 
+
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })

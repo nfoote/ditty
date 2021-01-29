@@ -4,7 +4,8 @@ import { head } from 'lodash';
 import Dropzone from './drop-zone';
 import Canvas from './canvas';
 import Prediction from './predicition';
-import classifyImage from '../classifiers/classify-image';
+import classifyImage from '../ml5/classify-image';
+import faceApi from '../ml5/face-api';
 
 const ImageContainer = () => {
   const [imageData, setImageData] = useState(null);
@@ -32,6 +33,7 @@ const ImageContainer = () => {
 
   const onImageLoad = (image) => {
     classifyImage(image).then((res) => setPredictions(res));
+    faceApi(image);
   };
 
   return (
