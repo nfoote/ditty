@@ -1,18 +1,19 @@
-// eslint-disable-next-line react/no-array-index-key
-import React, { useState } from 'react';
-import { head, size } from 'lodash';
-import Dropzone from './drop-zone';
-import Canvas from './canvas';
-import Prediction from './predicition';
-import classifyImage from '../ml5/classify-image';
-import faceApi from '../ml5/face-api';
+import React, { useState } from "react";
+import { head, size } from "lodash";
+import { connect } from "react-redux";
+import { addTodo } from "../reducers/todoSlice";
+import Dropzone from "./drop-zone";
+import Canvas from "./canvas";
+import Prediction from "./predicition";
+import classifyImage from "../ml5/classify-image";
+import faceApi from "../ml5/face-api";
 
-const ImageContainer = () => {
+const ImageContainer = ({ addTodo }) => {
   const [imageData, setImageData] = useState(null);
   const [predictions, setPredictions] = useState([]);
   const [faces, setFaces] = useState(0);
 
-  const onDrop = (acceptedFiles) => {
+  const onDrop = acceptedFiles => {
     const first = head(acceptedFiles);
     const reader = new FileReader();
     reader.readAsDataURL(first);
@@ -33,19 +34,19 @@ const ImageContainer = () => {
   };
 
   function callback() {
-    console.log('yoyoo');
+    console.log("yoyoo");
   }
 
-  const onImageLoad = (image) => {
-    classifyImage(image).then((res) => setPredictions(res));
-    faceApi(image, callback).then((res) => setFaces(size(res)));
-    console.log(faces);
+  const onImageLoad = image => {
+    classifyImage(image).then(res => setPredictions(res));
+    faceApi(image, callback).then(res => setFaces(size(res)));
+    addTodo('aaa');
   };
 
   return (
     <>
       <Dropzone onDrop={(acceptedFiles, rejectedFiles) => onDrop(acceptedFiles, rejectedFiles)}>
-        <Canvas imageData={imageData} onImageLoad={(img) => onImageLoad(img)} />
+        <Canvas imageData={imageData} onImageLoad={img => onImageLoad(img)} />
       </Dropzone>
 
       <div>
@@ -58,4 +59,6 @@ const ImageContainer = () => {
   );
 };
 
-export default ImageContainer;
+const mapDispatch = { addTodo };
+
+export default connect(null, mapDispatch)(ImageContainer);
