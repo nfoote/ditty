@@ -5,15 +5,13 @@ const detectionOptions = {
   withDescriptors: false,
 };
 
-export default function faceApi(imageInput) {
+export default async function faceApi(imageInput, callback) {
   // eslint-disable-next-line no-use-before-define
-  const faceapi = ml5.faceApi(detectionOptions, modelLoaded);
-
-  // When the model is loaded
+  // eslint-disable-next-line no-undef
+  // eslint-disable-next-line no-use-before-define
+  const faceapi = await ml5.faceApi(detectionOptions, modelLoaded);
+  callback();
   function modelLoaded() {
-    console.log('Model Loaded!');
-
-    // Make some sparkles
     faceapi.detect(imageInput, (err, results) => {
       console.log(results);
     });
