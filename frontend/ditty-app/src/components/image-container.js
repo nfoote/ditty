@@ -21,26 +21,11 @@ const ImageContainer = ({ addTodo }) => {
     reader.onloadend = () => {
       setImageData(reader.result);
     };
-
-    // const formData = new FormData();
-    // formData.append('photo', first);
-
-    // fetch('/upload', {
-    //   method: 'POST',
-    //   body: formData,
-    // }).then((res) => {
-    //   console.log('Request complete! response:', res);
-    // });
   };
-
-  function callback() {
-    console.log("yoyoo");
-  }
 
   const onImageLoad = image => {
     classifyImage(image).then(res => setPredictions(res));
-    faceApi(image, callback).then(res => setFaces(size(res)));
-    addTodo('aaa');
+    faceApi(image).then(res => setFaces(size(res)));
   };
 
   return (
@@ -48,7 +33,7 @@ const ImageContainer = ({ addTodo }) => {
       <Dropzone onDrop={(acceptedFiles, rejectedFiles) => onDrop(acceptedFiles, rejectedFiles)}>
         <Canvas imageData={imageData} onImageLoad={img => onImageLoad(img)} />
       </Dropzone>
-
+      {faces}
       <div>
         {predictions.map((p, key) => (
           // eslint-disable-next-line react/no-array-index-key

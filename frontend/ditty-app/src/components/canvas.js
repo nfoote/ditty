@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
-import Flex from './flex';
+import React, { useRef, useEffect, useState } from "react";
+import Flex from "./flex";
 
 const Canvas = ({ imageData, onImageLoad }) => {
   const canvasRef = useRef(null);
@@ -8,7 +8,7 @@ const Canvas = ({ imageData, onImageLoad }) => {
 
   useEffect(() => {
     if (canvasRef.current) {
-      const renderCtx = canvasRef.current.getContext('2d');
+      const renderCtx = canvasRef.current.getContext("2d");
 
       if (renderCtx) {
         setContext(renderCtx);
@@ -34,7 +34,7 @@ const Canvas = ({ imageData, onImageLoad }) => {
         width={500}
         height={500}
         style={{
-          border: '2px solid #000',
+          border: "2px solid #000",
           marginTop: 10,
         }}
       />

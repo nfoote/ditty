@@ -1,5 +1,5 @@
-import React from 'react';
-import Flex from './flex';
+import React from "react";
+import Flex from "./flex";
 
 const transformLabel = ({ label, confidence }) => `${label} (Confidence: ${confidence})`;
 
